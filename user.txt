@@ -1,0 +1,4 @@
+newuser|James83!|admin
+newuser|newuser|admin
+James83@!|Jam123|User
+jack|1234!|admin

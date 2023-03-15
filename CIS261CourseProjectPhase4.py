@@ -15,7 +15,7 @@ def CreateUsers():
         ########## Write the line of code that will call function GetUserPassword and assign the return value to userpwd
         userpwd = GetUserPassword()
         ########## Write the line of code that will call function GetUserRole() and assign the return value to userrole
-        userrole = GetUserRole
+        userrole = GetUserRole()
         UserDetail = username + "|" + userpwd + "|" + userrole + "\n"  
         UserFile.write(UserDetail)
     # close file to save data
@@ -65,13 +65,13 @@ def Login():
     UserRole = "None"
     while True:
        ########## Write the line of code that will read a line from UserFile and assign it to UserDetail
-       UserDetail = UserFile()      
+       UserDetail = UserFile.readline()      
        if not UserDetail:
            return UserRole, UserName
        ########## Write the line of code that will replace the carriage return in UserDetail
        UserDetail = UserDetail.replace("\n","")
        ########## Write the line of code that will split UserDetail on the pipe delimiter (|) and assign it to UserList
-       UserDetail += UserList.split("|")           
+       UserList += UserDetail.split("|")           
        if UserName == UserList[0]:
             UserRole = UserList[2]  # user is valid, return role
             return UserRole, UserName
@@ -168,16 +168,16 @@ if __name__ == "__main__":
     print()
     print("##### Data Entry #####")
     ########## Write the line of code to assign UserRole and UserName to the function Login
-    def Login(UserRole,UserName)
+    UserRole, UserName = Login()
     DetailsPrinted = False  ###
     EmpTotals = {} ###
     ########## Write the if statement that will check to see if UserRole is equal to NONE (NOTE: code will show red error lines until this line is written)
-    if UserRole == NONE:
+    if UserRole.upper() == NONE:
         print(UserName," is invalid.")
     else:
     # only admin users can enter data
         ##### write the if statement that will check to see if the UserRole is equal to ADMIN (NOTE: code will show red error lines until this line is written)
-        if UserRole == ADMIN:
+        if UserRole.upper() == ADMIN:
             
             EmpFile = open("Employees.txt", "a+")                
             while True:
